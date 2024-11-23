@@ -54,7 +54,7 @@ Ensure the following tools are installed on your system:
 
 ### **2. Project Structure**
 
-```plaintext
+```
 /project-root
 ├── beautybook-backend/
 │   ├── Dockerfile
@@ -134,7 +134,7 @@ REACT_APP_API_URL=http://localhost:5000
      ```
    - Install dependencies:
      ```bash
-     npm install
+     npm install --legacy-peer-deps
      ```
    - Start the frontend:
      ```bash
