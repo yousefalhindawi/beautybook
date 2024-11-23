@@ -1,0 +1,50 @@
+# version: "3.9"
+services:
+  mysql:
+    image: mysql:9.1
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./beautybook-backend
+    container_name: beautybook-backend
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    volumes:
+      - ./beautybook-backend:/app
+      - ./beautybook-backend/prisma:/app/prisma
+    command: >
+      sh -c "npx prisma migrate deploy --schema=/app/prisma/schema.prisma && npx prisma generate && pm2 start app.js -i max --no-daemon"
+
+  frontend:
+    build:
+      context: ./beautybook-frontend
+    container_name: beautybook-frontend
+    environment:
+      REACT_APP_API_URL: ${REACT_APP_API_URL}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./beautybook-frontend:/app
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql-data:

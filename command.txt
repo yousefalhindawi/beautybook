@@ -1,0 +1,103 @@
+Database:
+docker run --name beautybook-db -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=beautybook -e MYSQL_USER=user -e MYSQL_PASSWORD=password -p 3306:3306 -d mysql:latest
+
+docker run --name beautybook-shadowdb -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=beautybook -e MYSQL_USER=user -e MYSQL_PASSWORD=password -p 3307:3306 -d mysql:latest
+
+docker ps
+
+docker exec -it <RUNNING_CONTAINER_NAME_OR_ID> sh
+
+mysql -u root -p
+
+password: rootpassword
+
+show databases;
+use beautybook;
+show tables;
+describe Appointment;
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT CREATE ON *.* TO 'user'@'localhost';
+
+Backend:
+mkdir beautybook-backend
+cd beautybook-backend
+
+npm init -y
+
+
+npx prisma init
+
+npx prisma migrate dev --name init
+npx prisma generate
+
+
+npm install --legacy-peer-deps
+
+npm run build
+pm2 serve build/ 3000 --name "my-react-app" --no-daemon --spa
+
+docker-compose down
+docker-compose build
+docker-compose up
+
+
+
+
+appointments:
+
+[
+    {
+        "id": 2,
+        "date": "2024-11-22T22:00:00.000Z",
+        "serviceId": 1,
+        "staffId": 1,
+        "userId": 1,
+        "status": "pending",
+        "createdAt": "2024-11-23T11:50:36.869Z",
+        "updatedAt": "2024-11-23T11:50:36.869Z",
+        "service": {
+            "id": 1,
+            "name": "service0",
+            "description": "testtest",
+            "price": 10.5,
+            "duration": 30,
+            "createdAt": "2024-11-21T13:51:35.140Z",
+            "updatedAt": "2024-11-23T11:00:53.944Z"
+        },
+        "staff": {
+            "id": 1,
+            "name": "yousef0",
+            "email": "yousef0@g.com",
+            "phone": "790000",
+            "createdAt": "2024-11-21T13:46:21.358Z",
+            "updatedAt": "2024-11-23T08:51:36.671Z"
+        }
+    },
+    {
+        "id": 3,
+        "date": "2024-11-22T22:00:00.000Z",
+        "serviceId": 1,
+        "staffId": 1,
+        "userId": 1,
+        "status": "pending",
+        "createdAt": "2024-11-23T11:51:03.121Z",
+        "updatedAt": "2024-11-23T11:51:03.121Z",
+        "service": {
+            "id": 1,
+            "name": "service0",
+            "description": "testtest",
+            "price": 10.5,
+            "duration": 30,
+            "createdAt": "2024-11-21T13:51:35.140Z",
+            "updatedAt": "2024-11-23T11:00:53.944Z"
+        },
+        "staff": {
+            "id": 1,
+            "name": "yousef0",
+            "email": "yousef0@g.com",
+            "phone": "790000",
+            "createdAt": "2024-11-21T13:46:21.358Z",
+            "updatedAt": "2024-11-23T08:51:36.671Z"
+        }
+    }
+]
