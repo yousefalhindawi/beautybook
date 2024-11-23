@@ -54,7 +54,7 @@ Ensure the following tools are installed on your system:
 
 ### **2. Project Structure**
 
-```
+```plaintext
 /project-root
 ├── beautybook-backend/
 │   ├── Dockerfile
