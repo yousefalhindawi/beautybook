@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import axios from "../../utils/axiosInstance";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../redux/auth/auth.actions";
+import { register, resetAuthStatus } from "../../redux/auth/auth.actions";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -21,6 +21,12 @@ const Register = () => {
       navigate("/login");
     }
   }, [userState.user, navigate]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAuthStatus());
+    };
+  }, [dispatch]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

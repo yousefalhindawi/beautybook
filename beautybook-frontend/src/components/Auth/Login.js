@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../redux/auth/auth.actions";
+import { login, resetAuthStatus } from "../../redux/auth/auth.actions";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 
 const Login = () => {
@@ -17,6 +17,12 @@ const Login = () => {
       navigate("/");
     }
   }, [userState.token, navigate]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAuthStatus());
+    };
+  }, [dispatch]);
 
   console.log("userState", userState);
   console.log("userState.error", userState.error);
@@ -44,7 +50,7 @@ const Login = () => {
           <img
             src={require("../../assets/images/rb_5764.png")}
             alt="BeautyBook"
-            className="img-fluid" 
+            className="img-fluid"
           />
         </Col>
         <Col xs={12} md={6} className="m-auto">

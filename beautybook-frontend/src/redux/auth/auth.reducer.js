@@ -6,6 +6,7 @@ import {
   FETCH_REGISTER_REQUEST,
   FETCH_REGISTER_SUCCESS,
   FETCH_REGISTER_FAILURE,
+  RESET_AUTH_STATUS,
 } from "./auth.constants";
 
 const initialState = {
@@ -65,6 +66,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload.error,
+      };
+    case RESET_AUTH_STATUS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
       };
     default:
       return state;

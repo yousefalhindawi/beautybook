@@ -7,6 +7,7 @@ import {
   FETCH_REGISTER_REQUEST,
   FETCH_REGISTER_SUCCESS,
   FETCH_REGISTER_FAILURE,
+  RESET_AUTH_STATUS,
 } from "./auth.constants";
 
 const fetchLoginRequest = () => ({
@@ -35,6 +36,10 @@ const fetchRegisterSuccess = (payload) => ({
 const fetchRegisterFailure = (error) => ({
   type: FETCH_REGISTER_FAILURE,
   payload: { error },
+});
+
+const resetAuthStatus = () => ({
+  type: RESET_AUTH_STATUS,
 });
 
 const register = (reqBody) => {
@@ -107,6 +112,7 @@ export {
   fetchRegisterRequest,
   fetchRegisterSuccess,
   fetchRegisterFailure,
+  resetAuthStatus,
 };
 
 // const registerUser = async (req, res) => {
