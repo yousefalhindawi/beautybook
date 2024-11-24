@@ -237,7 +237,7 @@ REACT_APP_API_URL=http://localhost:5000
 #### Using Docker Compose
 1. Build and start containers:
     ```bash
-    docker-compose --build --no-cache
+    docker-compose build --no-cache
     ```
     ```bash
     docker-compose up
