@@ -5,6 +5,145 @@ BeautyBook is an advanced system designed for managing beauty appointments, serv
 
 ---
 
+Here's how you can add a section to your README file for **User Instructions on How to Use the BeautyBook App**.
+
+---
+
+### **How to Use the BeautyBook App**
+
+Once you have the app set up and running, you can navigate through the different sections of the BeautyBook system to manage appointments, services, and staff. Below is a guide to using the app effectively.
+
+---
+
+### **1. Registration & Login**
+#### **Registering a New Account**
+- On the landing page, you’ll see the **Register** button. Click on it to open the registration form.
+- Fill in the required fields, including:
+  - **Name**
+  - **Email**
+  - **Phone**
+  - **Address**
+  - **Password** (with at least 6 characters)
+- After entering your details, click the **Register** button to create your account. You will be redirected to the login page.
+
+#### **Logging In**
+- After registering, click on the **Login** button on the landing page to enter your credentials.
+- Enter your **Email** and **Password**.
+- Click **Login** to access the dashboard. Upon successful login, you’ll be redirected to the main dashboard.
+
+---
+
+### **2. Dashboard & Navigation**
+Once you are logged in, you will be directed to the **Dashboard**. The dashboard will contain the following sections:
+
+- **Appointments**
+  - View, search, and filter existing appointments.
+  - Add, update, or delete appointments as needed.
+  
+- **Services**
+  - View, search, and filter available services.
+  - Add, update, or delete services as required.
+
+- **Staff**
+  - View the staff members.
+  - Add, update, or delete staff members.
+
+- **Navigation Menu**
+  - Use the **Navbar** to easily navigate between different sections: **Appointments**, **Services**, **Staff**, and **Logout**.
+
+---
+
+### **3. Managing Appointments**
+#### **Viewing Appointments**
+- On the **Appointments** page, you’ll find a list of all your scheduled appointments.
+- You can **search** appointments by date, service, staff, or status (pending, confirmed, completed, or canceled).
+
+#### **Adding a New Appointment**
+- Click the **Add Appointment** button on the **Appointments** page.
+- Fill in the required details, such as:
+  - **Date & Time**
+  - **Service**
+  - **Staff**
+  - **User** (your account)
+  - **Status** (e.g., pending)
+- Click **Save** to create the appointment.
+- Important note: If there are no available services or staff, the system will not allow users to add an appointment.
+
+#### **Updating an Appointment**
+- Click on the **Update** button next to an existing appointment.
+- Modify the details and click **Save**.
+
+#### **Deleting an Appointment**
+- Click the **Delete** button next to the appointment.
+- Confirm the deletion in the confirmation popup.
+
+---
+
+### **4. Managing Services**
+#### **Viewing Services**
+- On the **Services** page, you’ll find a list of all available services.
+- You can **search** services by name or price range.
+
+#### **Adding a New Service**
+- Click the **Add Service** button on the **Services** page.
+- Fill in the service details, such as:
+  - **Service Name**
+  - **Description**
+  - **Price**
+  - **Duration**
+- Click **Save** to add the service.
+
+#### **Updating a Service**
+- Click the **Update** button next to an existing service.
+- Modify the service details and click **Save**.
+
+#### **Deleting a Service**
+- Click the **Delete** button next to the service.
+- Confirm the deletion in the confirmation popup.
+
+---
+
+### **5. Managing Staff**
+#### **Viewing Staff Members**
+- On the **Staff** page, you can see a list of all staff members.
+- You can **search** staff by name or email.
+
+#### **Adding a New Staff Member**
+- Click the **Add Staff** button on the **Staff** page.
+- Fill in the staff details, including:
+  - **Name**
+  - **Email**
+  - **Phone**
+- Click **Save** to add the staff member.
+
+#### **Updating Staff Details**
+- Click the **Update** button next to a staff member.
+- Modify the staff details and click **Save**.
+
+#### **Deleting a Staff Member**
+- Click the **Delete** button next to the staff member.
+- Confirm the deletion in the confirmation popup.
+
+---
+
+### **6. Logout**
+- To log out of your account, click the **Logout** button in the **Navbar**.
+- This will log you out and return you to the login page.
+
+---
+
+### **7. Error Handling & Troubleshooting**
+If you encounter any errors or unexpected behavior, try the following:
+- Refresh the page and ensure that you are logged in.
+---
+
+### **8. PDF Report**
+For appointment management, you can generate a **PDF report** of all your appointments:
+- Go to the **Appointments** page.
+- Click on the **Generate PDF Report** button to download a summary of your appointments in PDF format.
+
+---
+
 ## **Features**
 
 - User Authentication and Authorization
@@ -112,7 +251,15 @@ REACT_APP_API_URL=http://localhost:5000
    - Backend API: [http://localhost:5000](http://localhost:5000)
 
 #### **Manual Setup (Without Docker)**
-1. **Backend**:
+1. **MYSQL**:
+    - Install MySQL Server from the official MySQL Image.
+      ```bash
+      docker run --name beautybook-db -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=beautybook -e MYSQL_USER=user -e MYSQL_PASSWORD=password -p 3306:3306 -d mysql:9.1
+      ```
+      ```bash
+      docker run --name beautybook-shadowdb -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=beautybook -e MYSQL_USER=user -e MYSQL_PASSWORD=password -p 3307:3306 -d mysql:9.1
+      ```
+2. **Backend**:
    - Navigate to `beautybook-backend/`:
      ```bash
      cd beautybook-backend
@@ -130,7 +277,7 @@ REACT_APP_API_URL=http://localhost:5000
      pm2 start app.js --name backend --no-daemon
      ```
 
-2. **Frontend**:
+3. **Frontend**:
    - Navigate to `beautybook-frontend/`:
      ```bash
      cd beautybook-frontend
