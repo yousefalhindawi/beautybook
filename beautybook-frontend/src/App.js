@@ -19,6 +19,7 @@ import AppNavbar from "./components/Layout/Navbar";
 import Staffs from "./pages/Staffs";
 import Services from "./pages/Services";
 import Appointments from "./pages/Appointments";
+import AppFooter from "./components/Layout/Footer";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
           }
         /> */}
       </Routes>
+      <AppFooter />
     </Router>
   );
 };
