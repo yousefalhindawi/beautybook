@@ -42,7 +42,7 @@ const Login = () => {
       <Row className="w-100">
         <Col xs={12} md={5} className="text-center">
           <img
-            src={require("./rb_5764.png")}
+            src={require("../../assets/images/rb_5764.png")}
             alt="BeautyBook"
             className="img-fluid" 
           />
