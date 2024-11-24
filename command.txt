@@ -37,7 +37,7 @@ npm run build
 pm2 serve build/ 3000 --name "my-react-app" --no-daemon --spa
 
 docker-compose down
-docker-compose build
+docker-compose build --no-cache
 docker-compose up
 
 

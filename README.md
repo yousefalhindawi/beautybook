@@ -46,7 +46,7 @@ BeautyBook is an advanced system designed for managing beauty appointments, serv
 
 ### **1. Prerequisites**
 Ensure the following tools are installed on your system:
-- Node.js (v18 or higher)
+- Node.js (v18.12.0)
 - Docker & Docker Compose
 - Prisma CLI (`npm install -g prisma`)
 
@@ -89,7 +89,7 @@ MYSQL_USER=user
 MYSQL_PASSWORD=password
 
 # Backend
-DATABASE_URL=mysql://user:password@mysql:3306/beautybook
+DATABASE_URL=mysql://user:password@mysql:3306/beautybook // for docker-compose
 
 # Frontend
 REACT_APP_API_URL=http://localhost:5000
@@ -101,9 +101,12 @@ REACT_APP_API_URL=http://localhost:5000
 
 #### **Using Docker Compose**
 1. **Build and start containers**:
-   ```bash
-   docker-compose up --build
-   ```
+    ```bash
+  docker-compose --build --no-cache
+  ```
+  ```bash
+  docker-compose up
+  ```
 2. Open the application:
    - Frontend: [http://localhost:3000](http://localhost:3000)
    - Backend API: [http://localhost:5000](http://localhost:5000)
@@ -158,11 +161,15 @@ REACT_APP_API_URL=http://localhost:5000
 #### **Docker Commands**
 - Build and start containers:
   ```bash
-  docker-compose up --build
+  docker-compose --build --no-cache
+  ```
+  ```bash
+  docker-compose up
   ```
 - Stop containers:
   ```bash
-  docker-compose down
+  docker-compose down 
+  docker-compose down -v // to remove volumes
   ```
 - View logs:
   ```bash
