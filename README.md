@@ -63,7 +63,7 @@ Once you are logged in, you will be directed to the Dashboard. The dashboard wil
   - User (your account)
   - Status (e.g., pending)
 - Click Save to create the appointment.
-- Important note: If there are no available services or staff, the system will not allow users to add an appointment.
+- ### Important note: If there are no available services or staff, the system will not allow users to add an appointment.
 
 #### Updating an Appointment
 - Click on the Update button next to an existing appointment.
