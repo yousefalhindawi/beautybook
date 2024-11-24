@@ -15,7 +15,7 @@ import {
 } from "./appointment.constants.js";
 
 const initialState = {
-  appointments: null,
+  appointments: [],
   loading: false,
   error: null,
   successMessage: null,

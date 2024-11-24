@@ -15,7 +15,7 @@ import {
 } from "./staff.constants.js";
 
 const initialState = {
-  staffs: null,
+  staffs: [],
   loading: false,
   error: null,
   operation: "fetch",
