@@ -37,10 +37,17 @@ const Login = () => {
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
-      style={{ height: "100vh" }}
+      style={{ minHeight: "100vh" }}
     >
       <Row className="w-100">
-        <Col md={6} className="mx-auto">
+        <Col xs={12} md={5} className="text-center">
+          <img
+            src={require("./rb_5764.png")}
+            alt="BeautyBook"
+            className="img-fluid" 
+          />
+        </Col>
+        <Col xs={12} md={6} className="m-auto">
           <h2 className="text-center mb-4">Login</h2>
           {userState.error && <Alert variant="danger">{userState.error}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -64,7 +71,7 @@ const Login = () => {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="w-100">
+            <Button variant="primary" type="submit" className="w-100 mb-2">
               Login
             </Button>
           </Form>

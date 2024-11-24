@@ -20,7 +20,7 @@ const Register = () => {
     if (userState.user) {
       navigate("/login");
     }
-  }, [userState.user]);
+  }, [userState.user, navigate]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -38,11 +38,21 @@ const Register = () => {
       style={{ minHeight: "100vh" }}
     >
       <Row className="w-100">
-        <Col md={6} className="mx-auto">
+        <Col xs={12} md={5} className="text-center m-auto">
+          <img
+            src={require("./rb_5764.png")}
+            alt="BeautyBook"
+            className="img-fluid"
+          />
+        </Col>
+        <Col xs={12} md={6} className="m-auto">
           <h2 className="text-center mb-4">Register</h2>
           {/* {error && <Alert variant="danger">{error}</Alert>} */}
-          
-          <Form onSubmit={handleSubmit} className="p-4 border rounded shadow bg-light">
+
+          <Form
+            onSubmit={handleSubmit}
+            className="p-4 border rounded shadow bg-light"
+          >
             <Form.Group className="mb-3" controlId="formName">
               <Form.Label>Full Name</Form.Label>
               <Form.Control
@@ -106,7 +116,9 @@ const Register = () => {
             <Button variant="primary" type="submit" className="w-100">
               Register
             </Button>
-            {userState.error && <Alert variant="danger">{userState.error}</Alert>}
+            {userState.error && (
+              <Alert variant="danger">{userState.error}</Alert>
+            )}
           </Form>
         </Col>
       </Row>
