@@ -1,6 +1,9 @@
 # Use a Node.js image
 FROM node:18.12.1-alpine
 
+RUN apk --update --no-cache add curl
+RUN apk add --no-cache wget
+
 # Set the working directory
 WORKDIR /app
 

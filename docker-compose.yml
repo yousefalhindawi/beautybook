@@ -11,6 +11,12 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 15s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -24,7 +30,14 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: curl --fail http://localhost:5000/api/health || exit 1
+      interval: 15s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
     volumes:
       - ./beautybook-backend:/app
       - ./beautybook-backend/prisma:/app/prisma
@@ -40,11 +53,14 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - backend
-    volumes:
-      - ./beautybook-frontend:/app
+      backend:
+        condition: service_healthy
+    # volumes:
+      # - ./beautybook-frontend:/app
     stdin_open: true
     tty: true
+    # command: >
+    #   sh -c "npm run build && serve -s -n build -l 3000 --single"
 
 volumes:
   mysql-data:
