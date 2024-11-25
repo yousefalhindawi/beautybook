@@ -77,7 +77,6 @@ const AppointmentsTable = ({ appointmentState }) => {
   const handleAddSubmit = (e) => {
     e.preventDefault();
     // dispatch(addAppointment({ ...appointment, userId }));
-    console.log("appointment", appointment);
     dispatch(addAppointment(appointment)); // userId is added in the backend controller itself using the token
   };
 
@@ -118,7 +117,6 @@ const AppointmentsTable = ({ appointmentState }) => {
 
   const handleDeleteConfirm = async (e) => {
     e.preventDefault();
-    console.log("selectedAppointment", selectedAppointment);
     dispatch(deleteAppointment(selectedAppointment.id));
     setSelectedAppointment(null);
   };

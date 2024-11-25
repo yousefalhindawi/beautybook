@@ -24,8 +24,6 @@ const Login = () => {
     };
   }, [dispatch]);
 
-  console.log("userState", userState);
-  console.log("userState.error", userState.error);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

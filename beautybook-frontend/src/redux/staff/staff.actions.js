@@ -106,9 +106,6 @@ const fetchStaffs = () => {
     dispatch(fetchStaffsRequest());
     try {
       const response = await axiosInstance.get("/staffs");
-      //   console.log("staffsresponse", response);
-      //   const staffs = await response.json();
-      //   console.log("staffs", staffs);
       dispatch(fetchStaffsSuccess(response.data));
     } catch (error) {
       dispatch(fetchStaffsFailure(error.message));
@@ -121,8 +118,6 @@ const addStaff = (staff) => {
     dispatch(addStaffRequest());
     try {
       const response = await axiosInstance.post("/staffs", staff);
-      //   const newStaff = await response.json();
-      console.log("staffsresponse add", response);
       dispatch(addStaffSuccess(response.data, "Staff added successfully"));
     } catch (error) {
       dispatch(addStaffFailure(error.message));
@@ -138,7 +133,6 @@ const updateStaff = (staff) => {
         `/staffs/${staff.id}`,
         staff
       );
-      //   const updatedStaff = await response.json();
       dispatch(
         updateStaffSuccess(
           updatedStaffResponse.data,
@@ -158,7 +152,6 @@ const deleteStaff = (staffId) => {
       const updatedStaffResponse = await axiosInstance.delete(
         `/staffs/${staffId}`
       );
-      console.log("updatedStaffResponse", updatedStaffResponse);
       dispatch(deleteStaffSuccess(staffId, "Staff deleted successfully"));
     } catch (error) {
       dispatch(deleteStaffFailure(error.message));

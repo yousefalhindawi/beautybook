@@ -25,7 +25,6 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
     case FETCH_LOGIN_SUCCESS:
-      console.log("action.payload", action.payload);
       return {
         ...state,
         token: action.payload.token,
@@ -53,7 +52,6 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
     case FETCH_REGISTER_SUCCESS:
-      console.log("FETCH_REGISTER_SUCCESSaction.payload", action.payload);
       return {
         ...state,
         // token: action.payload.token,

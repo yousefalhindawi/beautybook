@@ -4,7 +4,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
 import { logout } from "../../redux/auth/auth.actions";
 import { jwtDecode } from "jwt-decode";
-// import { logout } from "../../redux/actions/authActions";
 
 const AppNavbar = () => {
   const dispatch = useDispatch();
@@ -14,7 +13,6 @@ const AppNavbar = () => {
   const isAuthenticated = !!user || !!token;
   const decodedToken = token ? jwtDecode(token) : {};
 
-  console.log(decodedToken);
   const userName = user?.name || decodedToken.name;
 
   const handleLogout = () => {
@@ -35,21 +33,15 @@ const AppNavbar = () => {
           <Nav className="me-auto">
             {isAuthenticated && (
               <>
-                {/* <Nav.Link> */}
                 <NavLink to="/appointments" className="nav-link text-light">
                   Appointments
                 </NavLink>
-                {/* </Nav.Link> */}
-                {/* <Nav.Link> */}
                 <NavLink to="/services" className="nav-link text-light">
                   Services
                 </NavLink>
-                {/* </Nav.Link> */}
-                {/* <Nav.Link> */}
                 <NavLink to="/staffs" className="nav-link text-light">
                   Staff
                 </NavLink>
-                {/* </Nav.Link> */}
               </>
             )}
           </Nav>

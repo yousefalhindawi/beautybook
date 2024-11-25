@@ -77,7 +77,6 @@ const fetchAppointments = () => {
     dispatch(fetchAppointmentsRequest());
     try {
       const appointmentResponse = await axiosInstance.get("/appointments");
-      console.log("fetchAppointments esponse", appointmentResponse);
       dispatch(fetchAppointmentsSuccess(appointmentResponse.data));
     } catch (error) {
       dispatch(fetchAppointmentsFailure(error.message));
@@ -90,7 +89,6 @@ const addAppointment = (appointment) => {
     dispatch(addAppointmentRequest());
     try {
       const response = await axiosInstance.post("/appointments", appointment);
-      console.log("addAppointment response", response);
       dispatch(
         addAppointmentSuccess(response.data, "Appointment added successfully")
       );

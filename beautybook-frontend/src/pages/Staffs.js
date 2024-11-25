@@ -54,16 +54,9 @@ const StaffTable = ({ staffState }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const dispatch = useDispatch();
   const data = staffState.staffs;
-  console.log("StaffTable", data);
-  console.log("Staffstaff", staff);
   const handleAddSubmit = (e) => {
     e.preventDefault();
     dispatch(addStaff(staff));
-    // if (staffState.error === null && staffState.loading === false) {
-    //   setShowModal(false);
-    //   setToastMessage("Staff Added Successfully");
-    //   setShowToast(true);
-    // }
   };
 
   useEffect(() => {
@@ -99,39 +92,14 @@ const StaffTable = ({ staffState }) => {
     e.preventDefault();
     dispatch(updateStaff(staff));
     setStaff(null);
-    // if (staffState.error === null && staffState.loading === false) {
-    //   setStaff(null);
-    //   setShowModal(false);
-    //   setToastMessage("Staff updated successfully!");
-    //   setShowToast(true);
-    // }
   };
 
   const handleDeleteConfirm = async (e) => {
     e.preventDefault();
     await dispatch(deleteStaff(selectedStaff.id));
     setSelectedStaff(null);
-    // if (!staffState.error && !staffState.loading) {
-    //   setSelectedStaff(null);
-    //   setShowDeleteModal(false);
-    //   setToastMessage("Staff deleted successfully!");
-    //   setShowToast(true);
-    // }
   };
 
-  // const handleExportRows = (rows) => {
-  //   const doc = new jsPDF();
-  //   const tableData = rows.map((row) => Object.values(row.original));
-  //   const tableHeaders = columns.map((c) => c.header);
-  //   console.log("tableData", tableData);
-  //   console.log("tableHeaders", tableHeaders);
-  //   autoTable(doc, {
-  //     head: [tableHeaders],
-  //     body: tableData,
-  //   });
-  //   console.log("doc", doc);
-  //   doc.save(`staff-${new Date().toISOString().slice(0, 10)}.pdf`);
-  // };
   const columnHelper = createMRTColumnHelper();
   const columns = [
     columnHelper.accessor("name", {
@@ -193,8 +161,6 @@ const StaffTable = ({ staffState }) => {
           setStaff(row.original);
           setIsAdding(false);
           setShowModal(true);
-          console.log("Update", row.original);
-          console.log("Update", data);
           closeMenu();
         }}
         sx={{ m: 0 }}
@@ -208,7 +174,6 @@ const StaffTable = ({ staffState }) => {
         key={1}
         onClick={() => {
           // Delete staff logic...
-          console.log("Delete", row.original);
           setSelectedStaff(row.original);
           setShowDeleteModal(true);
           closeMenu();
@@ -223,11 +188,8 @@ const StaffTable = ({ staffState }) => {
     ],
     renderTopToolbarCustomActions: ({ table }) => {
       const handleAddStaff = () => {
-        // alert("handleAddStaff ");
-        console.log("handleAddStaff");
         setIsAdding(true);
         setShowModal(true);
-        // dispatch(addStaff());
       };
       return (
         <Box
@@ -239,15 +201,19 @@ const StaffTable = ({ staffState }) => {
           }}
         >
           {/* <Box sx={{ display: "flex", gap: "0.5rem", alignItems: "center" }}> */}
-            {/* import MRT sub-components */}
-            {/* <MRT_GlobalFilterTextField table={table} /> */}
-            {/* <MRT_ToggleFiltersButton table={table} /> */}
+          {/* import MRT sub-components */}
+          {/* <MRT_GlobalFilterTextField table={table} /> */}
+          {/* <MRT_ToggleFiltersButton table={table} /> */}
           {/* </Box> */}
           <Button
             disabled={table.getPrePaginationRowModel().rows.length === 0}
             //export all rows, including from the next page, (still respects filtering and sorting)
             onClick={() =>
-              handleExportRows(table.getPrePaginationRowModel().rows, columns, "staff")
+              handleExportRows(
+                table.getPrePaginationRowModel().rows,
+                columns,
+                "staff"
+              )
             }
             startIcon={<FileDownloadIcon />}
           >
@@ -256,7 +222,9 @@ const StaffTable = ({ staffState }) => {
           <Button
             disabled={table.getRowModel().rows.length === 0}
             //export all rows as seen on the screen (respects pagination, sorting, filtering, etc.)
-            onClick={() => handleExportRows(table.getRowModel().rows, columns, "staff")}
+            onClick={() =>
+              handleExportRows(table.getRowModel().rows, columns, "staff")
+            }
             startIcon={<FileDownloadIcon />}
           >
             Export Page Rows
@@ -330,7 +298,6 @@ const Staffs = () => {
   //   return staffState.staffs;
   // }, [staffState.staffs]);
 
-  console.log("staffssssss", staffState);
   useEffect(() => {
     const fetchStaff = async () => {
       await dispatch(fetchStaffs());

@@ -47,7 +47,6 @@ const register = (reqBody) => {
     dispatch(fetchRegisterRequest());
     try {
       const userResponse = await axiosInstance.post("/auth/register", reqBody);
-      // const user = await userResponse.json();
       dispatch(fetchRegisterSuccess(userResponse));
     } catch (error) {
       console.log("error", error.status);
@@ -65,16 +64,9 @@ const login = ({ email, password }) => {
     dispatch(fetchLoginRequest());
     try {
       const userResponse = await axiosInstance.post("/auth/login", {
-        email: email || "test@example.com",
-        password: password || "password",
+        email: email,
+        password: password,
       });
-      // if (userResponse.status === 401) {
-      //   dispatch(fetchLoginFailure("Invalid credentials"));
-      //   console.log("Invalid credentials");
-      // }
-      console.log("userResponse", userResponse);
-      // const user = await userResponse.json();
-      // console.log("user", user);
       localStorage.setItem("token", userResponse.data.token);
       dispatch(
         fetchLoginSuccess({

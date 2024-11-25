@@ -14,7 +14,6 @@ const StaffModal = ({
   resetStatus,
   resetSelectedItem,
 }) => {
-  console.log("isAdding", isAdding);
   return (
     <Modal
       show={showModal}

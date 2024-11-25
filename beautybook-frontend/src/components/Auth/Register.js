@@ -31,7 +31,6 @@ const Register = () => {
     e.preventDefault();
     try {
       const reqBody = { email, password, name, phone, address, role };
-      console.log(reqBody);
       await dispatch(register(reqBody));
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed.");

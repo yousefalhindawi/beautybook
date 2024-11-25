@@ -61,7 +61,6 @@ const createAppointment = async (req, res) => {
   const { serviceId, staffId, date, status } = req.body;
   try {
     const userId = req.user.userId;
-    console.log({ serviceId, staffId, date, status, userId });
     // const userId = 1;
     const newAppointment = await prisma.appointment.create({
       data: {
